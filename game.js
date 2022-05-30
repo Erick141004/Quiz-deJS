@@ -184,7 +184,7 @@ let tempo = setInterval(function(){
     }
     else
     {
-        document.getElementById('time').innerHTML = `00:0${seconds}`
+        document.getElementById('time').innerHTML = `00:${seconds}`
     }
     
 }, 1000)

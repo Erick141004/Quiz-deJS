@@ -3,6 +3,7 @@ const choices = Array.from(document.querySelectorAll('.choice-text'));
 const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
+const botao = document.getElementById('button');
 
 let currentQuestion = {}
 let acceptingAnswers = true
@@ -10,14 +11,9 @@ let score = 0
 let questionCounter = 0
 let availableQuestions = []
 
-function img(){
-
-}
-
 let questions = [
     {
         question: 'What is 2 + 2?',
-        image: img(),
         choice1: '2',
         choice2: '4',
         choice3: '3',
@@ -154,6 +150,9 @@ choices.forEach(choice => {
 
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply)
+            clearInterval(time)
+            seconds = 16;
+            botao.style.display.block;
             getNewQuestion()
         }, 1000)
     })
@@ -166,26 +165,19 @@ incrementScore = num => {
 
 startGame()
 
-/*
 
-let dt = new Date(new Date().setTime(0));
-let ctime = dt.getTime();
-let seconds = Math.floor((ctime % (1000 * 60))/ 1000);
-let minutes = Math.floor((ctime % (1000 * 60 * 60))/( 1000 * 60));
-console.log(seconds, minutes);
-let time = 0;
-let mytime = setInterval(function(){
-        time++;
-        
-        if(seconds < 59) {
-            seconds++;
-        } else {
-            seconds = 0;
-            minutes++;
-        }
-        let formatted_sec = seconds < 10 ? `0${seconds}`: `${seconds}`;
-        let formatted_min = minutes < 10 ? `0${minutes}`: `${minutes}`
-        document.querySelector("span.time").innerHTML = `${formatted_min} : ${formatted_sec}`;
-    }, 1000);
+let time = document.getElementById('time');
+let seconds = 15;
+let tempo = setInterval(function(){
+    seconds--;
 
-    */
+    if(seconds >= 10)
+    {
+        document.getElementById('time').innerHTML = `00:${seconds}`
+    }
+    else(seconds < 10)
+    {
+        document.getElementById('time').innerHTML = `00:0${seconds}`
+    }
+    
+}, 1000)

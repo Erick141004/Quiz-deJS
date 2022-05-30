@@ -180,11 +180,11 @@ let tempo = setInterval(function(){
 
     if(seconds >= 10)
     {
-        document.getElementById('time').innerHTML = `00:${seconds}`
+       time.innerHTML = `00:${seconds}`
     }
     else
     {
-        document.getElementById('time').innerHTML = `00:${seconds}`
+       time.innerHTML = `00:0${seconds}`
     }
     
 }, 1000)

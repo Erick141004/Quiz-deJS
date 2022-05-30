@@ -106,6 +106,7 @@ startGame = () => {
 
 getNewQuestion = () =>
 {
+    botao.style.display = "none";
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS)
     {
         localStorage.setItem('mostRecentScore', score)
@@ -159,8 +160,7 @@ choices.forEach(choice => {
             selectedChoice.parentElement.classList.remove(classToApply)
             clearInterval(time)
             seconds = 16;
-            botao.style.display.block;
-            getNewQuestion()
+            botao.style.display = "block";
         }, 1000)
     })
 })

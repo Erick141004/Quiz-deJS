@@ -141,9 +141,16 @@ choices.forEach(choice => {
 
         let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
 
-        if(classToApply === 'correct')
+        if(classToApply === 'correct' && seconds >= 12)
         {
-            incrementScore(SCORE_POINTS)
+            incrementScore(SCORE_POINTS + 50)
+        }
+        else
+        {
+            if(classToApply === 'correct')
+            {
+                incrementScore(SCORE_POINTS)
+            }   
         }
 
         selectedChoice.parentElement.classList.add(classToApply)

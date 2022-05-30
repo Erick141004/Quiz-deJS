@@ -19,6 +19,30 @@ body{
     transform: 100ms;
 }
 
+#button
+{
+    font-size: 2.4rem;
+    padding: 2rem 0;
+    width: 30rem;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(90deg, rgb(18, 92, 255) 0%, rgb(0, 102, 255) 100%);
+    border: none;
+    display: block;
+    position: relative;
+    left: 500px;
+}
+
+#button:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(8, 114, 244, 0,6);
+    transition: transform 150ms;
+    transform: scale(1.03);
+}
+
 .choice-prefix{
     padding: 2rem 2.5rem;
     color: white;

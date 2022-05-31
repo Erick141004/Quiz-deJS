@@ -188,8 +188,8 @@ choices.forEach(choice => {
             }
             else
             {
-                if(classToApply === 'correct')
-                {
+                if(classToApply === 'correct' && seconds > 0)
+                { 
                     incrementScore(SCORE_POINTS)
                 }  
             }       

@@ -4,98 +4,103 @@ const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
 const botao = document.getElementById('button');
+const img = document.getElementById('image');
+let time = document.getElementById('time');
 
-let currentQuestion = {}
+let currentQuestion = []
 let acceptingAnswers = true
 let score = 0
 let questionCounter = 0
 let availableQuestions = []
 
 let questions = [
-    {
-        question: 'What is 2 + 2?',
-        choice1: '2',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 2,
-    },
-    {
-        question: 'What is 2x + 4?',
-        choice1: '2',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 1,
-    },
-    {
-        question: 'What is 1 x 0 + 3?',
-        choice1: '2',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 3,
-    },
-    {
-        question: 'What is 7 x 3?',
-        choice1: '21',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 1,
-    },
-    {
-        question: 'What is 7 x 3 - 9?',
-        choice1: '18',
-        choice2: '10',
-        choice3: '14',
-        choice4: '12',
-        answer: 4,
-    },
-    {
-        question: 'What is (3 + 7) x 5?',
-        choice1: '55',
-        choice2: '17',
-        choice3: '13',
-        choice4: '50',
-        answer: 4,
-    },
-    {
-        question: 'What is 4 x 4 : 2?',
-        choice1: '27',
-        choice2: '41',
-        choice3: '8',
-        choice4: '23',
-        answer: 3,
-    },
-    {
-        question: 'What is (2 x 4) : 2 + 17?',
-        choice1: '21',
-        choice2: '43',
-        choice3: '32',
-        choice4: '12',
-        answer: 1,
-    },
-    {
-        question: 'What is 8 x 7?',
-        choice1: '56',
-        choice2: '2',
-        choice3: '3',
-        choice4: '34',
-        answer: 1,
-    },
-    {
-        question: 'What is 6 x 2?',
-        choice1: '21',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 4,
-    },
+    [
+        'What is 2 + 2?',
+         '2',
+         '4',
+         '3',
+         '12',
+         2,
+    ],
+    [
+        'What is 2x + 4?',
+        '2',
+        '4',
+        '3',
+        '12',
+         1,
+    ],
+    [
+        'What is 1 x 0 + 3?',
+         '2',
+         '4',
+         '3',
+         '12',
+         3,
+    ],
+    [
+        'What is 7 x 3?',
+         '21',
+         '4',
+         '3',
+         '12',
+         1,
+    ],
+    [
+        'What is 7 x 3 - 9?',
+         '18',
+         '10',
+         '14',
+         '12',
+         4,
+    ],
+    [
+        'What is (3 + 7) x 5?',
+         '55',
+         '17',
+         '13',
+         '50',
+         4,
+    ],      
+    [
+        'What is 4 x 4 : 2?',
+         '27',
+         '41',
+         '8',
+         '23',
+         3,
+    ],
+    [
+        'What is (2 x 4) : 2 + 17?',
+            '21',
+            '43',
+            '32',
+            '12',
+            1,
+    ], 
+         
+    [
+        'What is 8 x 7?',
+        '56',
+        '2',
+        '3',
+        '34',
+        1,
+        'http://s2.glbimg.com/E5oewmPWuzlx_kVsvMkZSqmOI1w=/290x217/s.glbimg.com/jo/g1/f/original/2010/10/07/charlie.jpg',
+    ],
+    [
+         'What is 6 x 2?',
+         '21',
+         '4',
+         '3',
+         '12',
+         4,
+    ],
 ]
 
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 10
+let tempo, seconds;
 
 startGame = () => {
     questionCounter = 0
@@ -107,6 +112,18 @@ startGame = () => {
 getNewQuestion = () =>
 {
     botao.style.display = "none";
+    
+    choices.forEach((choice) => {
+        if (choice.dataset['number'] == currentQuestion[5])
+        {
+            choice.parentElement.classList.remove('correct')
+        }         
+        else
+        {
+            choice.parentElement.classList.remove('incorrect')
+        }
+    })
+
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS)
     {
         localStorage.setItem('mostRecentScore', score)
@@ -120,50 +137,69 @@ getNewQuestion = () =>
 
     const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
     currentQuestion = availableQuestions[questionsIndex]
-    question.innerText = currentQuestion.question
+    question.innerText = currentQuestion[0]
 
-    choices.forEach(choice => {
+    if (!(currentQuestion[6] == undefined))
+    {
+        img.style.display = "block"
+        img.src = currentQuestion[6];
+        document.getElementById('container').classList.add('imageContainer');
+    }
+    else
+    {
+        img.style.display = "none";
+        document.getElementById('container').classList.remove('imageContainer');
+    }
+    choices.forEach((choice, index) => {
         const number = choice.dataset['number']
-        choice.innerText = currentQuestion['choice' + number]
+        choice.innerText = currentQuestion[index + 1]
     })
 
     availableQuestions.splice(questionsIndex, 1)
 
-    acceptingAnswers = true
+    acceptingAnswers = true;
+    seconds = 15;
+    time.innerText = '00:15';
+    meuTempo();
 }
 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
         if(!acceptingAnswers) return
 
+        clearInterval(tempo);
         acceptingAnswers = false
         const selectedChoice = e.target
         const selectedAnswer = selectedChoice.dataset['number']
 
-        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
+        let classToApply = selectedAnswer == currentQuestion[5] ? 'correct' : 'incorrect'
 
+        
+    
         if(classToApply === 'correct' && seconds >= 12)
         {
             incrementScore(SCORE_POINTS + 50)
         }
         else
         {
-            if(classToApply === 'correct')
+            if(classToApply === 'correct' && seconds >= 7) 
             {
-                incrementScore(SCORE_POINTS)
-            }   
-        }
-
-        selectedChoice.parentElement.classList.add(classToApply)
-
-        setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply)
-            clearInterval(time)
-            seconds = 16;
-            botao.style.display = "block";
-        }, 1000)
+                incrementScore(SCORE_POINTS + 30)
+            }
+            else
+            {
+                if(classToApply === 'correct')
+                {
+                    incrementScore(SCORE_POINTS)
+                }  
+            }       
+        } 
+        
+        mostrarRespo();
     })
 })
+
+
 
 incrementScore = num => {
     score += num
@@ -173,18 +209,40 @@ incrementScore = num => {
 startGame()
 
 
-let time = document.getElementById('time');
-let seconds = 15;
-let tempo = setInterval(function(){
-    seconds--;
+function mostrarRespo()
+{
+    choices.forEach((choice) => {
+        if (choice.dataset['number'] == currentQuestion[5])
+        {
+            choice.parentElement.classList.add('correct')
+        }         
+        else
+        {
+            choice.parentElement.classList.add('incorrect')
+        }
+    })
+    setTimeout(() => {
+        botao.style.display = "block";
+    }, 500)  
+}
 
-    if(seconds >= 10)
-    {
-       time.innerHTML = `00:${seconds}`
-    }
-    else
-    {
-       time.innerHTML = `00:0${seconds}`
-    }
-    
-}, 1000)
+function meuTempo()
+{
+    tempo = setInterval(function(){
+        seconds--;
+        if(seconds >= 10)
+        {
+           time.innerHTML = `00:${seconds}`
+        }
+        else
+        {
+           time.innerHTML = `00:0${seconds}`
+        }
+        if(seconds == 0)
+        {
+            mostrarRespo();
+            clearInterval(tempo)
+        }
+    }, 1000)
+}
+

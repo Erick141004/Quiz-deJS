@@ -6,12 +6,20 @@ const progressBarFull = document.querySelector('#progressBarFull');
 const botao = document.getElementById('button');
 const img = document.getElementById('image');
 let time = document.getElementById('time');
+let contador = document.getElementById('valorIntro')
+let emVoltaCont = document.getElementById('intro')
+let emVolta = document.getElementById('emVolta')
+let bonus = document.getElementById('bonus')
+const textoBonus = document.getElementById('textoBonus')
 
 let currentQuestion = []
 let acceptingAnswers = true
 let score = 0
 let questionCounter = 0
 let availableQuestions = []
+const SCORE_POINTS = 100
+const MAX_QUESTIONS = 10
+let tempo, seconds, tempoInt, secondsInt = 3, cont = 0;
 
 let questions = [
     [
@@ -98,20 +106,17 @@ let questions = [
     ],
 ]
 
-const SCORE_POINTS = 100
-const MAX_QUESTIONS = 10
-let tempo, seconds;
-
 startGame = () => {
     questionCounter = 0
     score = 0
     availableQuestions = [...questions]
-    getNewQuestion()
+    intro()
 }
 
 getNewQuestion = () =>
 {
     botao.style.display = "none";
+    bonus.style.display = 'none'
     
     choices.forEach((choice) => {
         if (choice.dataset['number'] == currentQuestion[5])
@@ -127,7 +132,7 @@ getNewQuestion = () =>
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS)
     {
         localStorage.setItem('mostRecentScore', score)
-
+        localStorage.setItem('cont', cont)
         return window.location.assign('end.html')
     }
 
@@ -179,18 +184,24 @@ choices.forEach(choice => {
         if(classToApply === 'correct' && seconds >= 12)
         {
             incrementScore(SCORE_POINTS + 50)
+            bonus.style.display = 'block'
+            textoBonus.innerHTML = 'BÔNUS +50'
         }
         else
         {
             if(classToApply === 'correct' && seconds >= 7) 
             {
                 incrementScore(SCORE_POINTS + 30)
+                bonus.style.display = 'block'
+                textoBonus.innerHTML = 'BÔNUS +30'
+               
             }
             else
             {
                 if(classToApply === 'correct' && seconds > 0)
                 { 
                     incrementScore(SCORE_POINTS)
+                
                 }  
             }       
         } 
@@ -204,10 +215,8 @@ choices.forEach(choice => {
 incrementScore = num => {
     score += num
     scoreText.innerText = score
+    cont++;
 }
-
-startGame()
-
 
 function mostrarRespo()
 {
@@ -246,3 +255,49 @@ function meuTempo()
     }, 1000)
 }
 
+function intro()
+{
+    tempoInt = setInterval(function(){
+        secondsInt--;
+        if(secondsInt == 3)
+        {
+            contador.innerHTML = '3'
+        }
+        else
+        {   
+            if(secondsInt == 2)
+            {
+                contador.innerHTML = '2'
+            }
+            else
+            {
+                if(secondsInt == 1)
+                {
+                    contador.innerHTML = '1'
+                }
+                else
+                {
+                    if(secondsInt == 0)
+                    {
+                        contador.innerHTML = 'VAI!'
+                    }
+                    else
+                    {
+                        if(secondsInt < 0)
+                        {
+                            document.body.removeChild(emVoltaCont)
+                            emVolta.style.display = 'block'
+                            clearInterval(tempoInt)
+                            getNewQuestion()  
+                        }     
+                    }
+                    
+                }
+            }
+        }
+    }, 1000)
+}
+
+startGame()
+
+    

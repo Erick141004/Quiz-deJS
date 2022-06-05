@@ -42,6 +42,8 @@ body{
 
 #image
 {
+    margin-bottom: 50px;
+    display: none;
     width: 400px;
     height: 220px;
     position: relative;

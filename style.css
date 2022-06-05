@@ -33,7 +33,6 @@ h2{
 
 body{
     background-image: url("imgquiz/God-of-War.webp");
-    margin-bottom: 300px;
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; 
 }

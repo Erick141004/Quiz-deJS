@@ -51,7 +51,7 @@ let questions = [
          'imgquiz/modi-e-magni.png',
     ],
     [
-        'Acorentado em uma das mão de typhon esta promoteu onde deve ser punido por zeus por qual motivo ele recebe tal punição?',
+        'Por qual motivo Prometeu esta acorentado?',
          'Pois ele entregou a chama do olimpo para os humanos',
          'Pois ele se apaixonou por uma mortal',
          'Pois ele duelou contra poseidon e perdeu',
@@ -85,7 +85,7 @@ let questions = [
          'imgquiz/mimir.jpg',
     ],
     [
-        'É sabido que kratos morreu durante o jogo mais de uma vez você consegue me falar quantas vezes ele morreu?',
+        'Quantas vezes kratos morreu durante o jogo?',
             '2',
             '3',
             '4',

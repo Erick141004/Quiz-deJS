@@ -4,6 +4,7 @@ const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
 const botao = document.getElementById('button');
+const divImage = document.getElementById('divImage');
 const img = document.getElementById('image');
 let time = document.getElementById('time');
 let contador = document.getElementById('valorIntro')
@@ -11,6 +12,9 @@ let emVoltaCont = document.getElementById('intro')
 let emVolta = document.getElementById('emVolta')
 let bonus = document.getElementById('bonus')
 const textoBonus = document.getElementById('textoBonus')
+const musicaTema = document.getElementById('player')
+const musicErro = document.getElementById('erro')
+const musicAcert = document.getElementById('acerto')
 
 let currentQuestion = []
 let acceptingAnswers = true
@@ -23,11 +27,11 @@ let tempo, seconds, tempoInt, secondsInt = 3, cont = 0;
 
 let questions = [
     [
-        'What is 2 + 2?',
-         '2',
-         '4',
-         '3',
-         '12',
+        'Qual é o nome da serpente apresentada em GOW4?',
+         'Anaconda',
+         'Jormungand ',
+         'Ball',
+         'Serquet',
          2,
     ],
     [
@@ -45,6 +49,7 @@ let questions = [
          '3',
          '12',
          3,
+         'imgquiz/modi-e-magni.png',
     ],
     [
         'What is 7 x 3?',
@@ -53,13 +58,14 @@ let questions = [
          '3',
          '12',
          1,
+         'imgquiz/prometheus.jpeg',
     ],
     [
-        'What is 7 x 3 - 9?',
-         '18',
-         '10',
-         '14',
-         '12',
+        'Qual é a mitologia que GOW usa como base para seus jogos?',
+         'Egipicia e Nordica',
+         'Romana e Nordica',
+         'Grega e Egipicia',
+         'Grega e Nordica',
          4,
     ],
     [
@@ -77,6 +83,7 @@ let questions = [
          '8',
          '23',
          3,
+         'imgquiz/mimir.jpg',
     ],
     [
         'What is (2 x 4) : 2 + 17?',
@@ -94,7 +101,7 @@ let questions = [
         '3',
         '34',
         1,
-        'http://s2.glbimg.com/E5oewmPWuzlx_kVsvMkZSqmOI1w=/290x217/s.glbimg.com/jo/g1/f/original/2010/10/07/charlie.jpg',
+        'imgquiz/irmas-furia-gow.jpeg',
     ],
     [
          'What is 6 x 2?',
@@ -117,7 +124,8 @@ getNewQuestion = () =>
 {
     botao.style.display = "none";
     bonus.style.display = 'none'
-    
+    musicaTema.play()
+
     choices.forEach((choice) => {
         if (choice.dataset['number'] == currentQuestion[5])
         {
@@ -146,13 +154,13 @@ getNewQuestion = () =>
 
     if (!(currentQuestion[6] == undefined))
     {
-        img.style.display = "block"
+        divImage.style.display = "block"
         img.src = currentQuestion[6];
         document.getElementById('container').classList.add('imageContainer');
     }
     else
     {
-        img.style.display = "none";
+        divImage.style.display = "none";
         document.getElementById('container').classList.remove('imageContainer');
     }
     choices.forEach((choice, index) => {
@@ -172,6 +180,7 @@ choices.forEach(choice => {
     choice.addEventListener('click', e => {
         if(!acceptingAnswers) return
 
+        musicaTema.pause()
         clearInterval(tempo);
         acceptingAnswers = false
         const selectedChoice = e.target
@@ -186,6 +195,7 @@ choices.forEach(choice => {
             incrementScore(SCORE_POINTS + 50)
             bonus.style.display = 'block'
             textoBonus.innerHTML = 'BÔNUS +50'
+            musicAcert.play()
         }
         else
         {
@@ -201,8 +211,12 @@ choices.forEach(choice => {
                 if(classToApply === 'correct' && seconds > 0)
                 { 
                     incrementScore(SCORE_POINTS)
-                
-                }  
+                    musicAcert.play()
+                } 
+                else
+                {
+                    musicErro.play()
+                } 
             }       
         } 
         
@@ -250,6 +264,8 @@ function meuTempo()
         if(seconds == 0)
         {
             mostrarRespo();
+            musicErro.play()
+            musicaTema.pause()
             clearInterval(tempo)
         }
     }, 1000)

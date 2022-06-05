@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
+    <audio class="musica" id="player" autoplay controls loop id="musica" src="audio/Bear McCreary  God of War Audio.mp3" type="audio/mpeg"></audio>
+    <audio class="musica" id="erro" controls id="musica" src="audio/58- Buzzer.mp3" type="audio/mpeg"></audio>
+    <audio class="musica" id="acerto" controls id="musica" src="audio/13- Sino Longo 2.mp3" type="audio/mpeg"></audio>
     <div id="intro"> 
         <h1 id="valorIntro">3</h1>
     </div>
@@ -18,9 +21,6 @@
                 <div id="bonus" class="text-center">
                     <h1 id="textoBonus" class="pulse" class="slide-top">BÔNUS +50</h1>
                 </div>
-               <!--<div id="bonus2" class="text-center">
-                    <h1 class="pulse" class="slide-top">BÔNUS +30</h1>
-                </div>  --> 
                 <div id="hud">
                     <div class="hud-item">
                         <p id="progressText" class="hud-prefix">
@@ -48,7 +48,9 @@
                     </div>
                 </div>
                 <h1 id="question">What is the answer to this question?</h1>
-                <img src="" id="image">
+                <div id="divImage">
+                    <img src="" id="image">
+                </div>
                 <div class="choice-container">
                     <p class="choice-prefix">A</p>
                     <p class="choice-text" data-number="1">Choice</p>
@@ -69,6 +71,7 @@
             </div>
         </div>
     </div>
+    
     <script src="game.js"></script>
 </body>
 </html>

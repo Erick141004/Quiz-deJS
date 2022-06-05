@@ -4,7 +4,6 @@ const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
 const botao = document.getElementById('button');
-const divImage = document.getElementById('divImage');
 const img = document.getElementById('image');
 let time = document.getElementById('time');
 let contador = document.getElementById('valorIntro')
@@ -154,13 +153,13 @@ getNewQuestion = () =>
 
     if (!(currentQuestion[6] == undefined))
     {
-        divImage.style.display = "block"
+        img.style.display = "block"
         img.src = currentQuestion[6];
         document.getElementById('container').classList.add('imageContainer');
     }
     else
     {
-        divImage.style.display = "none";
+        img.style.display = "none";
         document.getElementById('container').classList.remove('imageContainer');
     }
     choices.forEach((choice, index) => {
@@ -204,7 +203,7 @@ choices.forEach(choice => {
                 incrementScore(SCORE_POINTS + 30)
                 bonus.style.display = 'block'
                 textoBonus.innerHTML = 'BÔNUS +30'
-               
+                musicAcert.play()
             }
             else
             {

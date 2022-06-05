@@ -11,8 +11,8 @@ body{
     margin-bottom: 0.8rem;
     width: 100%;
     border-radius: 4px;
-    background-color: rgb(18, 93, 255);
-    font-size: 3rem;
+    background: linear-gradient(90deg, rgb(236, 120, 120) 0%, rgb(136, 7, 18) 100%);
+    font-size: 3.5rem;
     min-width: 80rem;
 }
 
@@ -21,11 +21,13 @@ body{
     box-shadow: 0 0.4rem 1.4rem 0 rgba(6, 103, 247, 0,5);
     transform: scale(1.02);
     transform: 100ms;
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(136, 7, 18) 100%);
+
 }
 
 .musica
 {
-    display: none;
+    display: block;
 }
 
 #image
@@ -117,11 +119,11 @@ body{
     text-decoration: none;
     color: rgb(38, 38, 38);
     background: linear-gradient(90deg, rgb(136, 7, 18) 0%, rgb(194, 106, 106) 100%);
-    border-color: rgb(194, 106, 106);
     display: block;
     position: relative;
     left: 500px;
     border-radius: 4px;
+    border: none;
 }
 
 #button:hover{
@@ -143,12 +145,12 @@ body{
 
 .correct
 {
-    background: linear-gradient(32deg, rgb(29, 189, 48) 0%, rgb(7, 255, 98) 100%); 
+    background: linear-gradient(32deg, rgb(41, 212, 61) 0%, rgb(7, 255, 98) 100%); 
 }
 
 .incorrect
 {
-    background: linear-gradient(32deg, rgb(126, 49, 49) 0%, rgb(255, 20, 20) 100%);
+    background: linear-gradient(32deg, rgb(161, 37, 37) 0%, rgba(255, 1, 1, 0.637) 100%);
 }
 
 /* Heads Up Display*/

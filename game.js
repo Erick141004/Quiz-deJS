@@ -172,7 +172,7 @@ getNewQuestion = () =>
     acceptingAnswers = true;
     seconds = 15;
     time.innerText = '00:15';
-    meuTempo();
+    //meuTempo();
 }
 
 choices.forEach(choice => {

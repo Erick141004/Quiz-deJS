@@ -22,6 +22,7 @@ h1{
     font-size: 5.4rem;
     color: rgb(255, 255, 255);
     margin-bottom: 5rem;
+    
 }
 
 h2{
@@ -87,7 +88,7 @@ body{
     color: rgb(28, 26, 26);
     background: linear-gradient(90deg, rgb(136, 7, 18) 0%, rgb(194, 106, 106) 100%);
     border-radius: 5px;
-    border-color: rgb(194, 106, 106);
+    
 }
 
 .btn:hover{
@@ -106,7 +107,7 @@ body{
 #highscore-btn
 {
     background: linear-gradient(90deg, rgb(136, 7, 18) 0%, rgb(194, 106, 106) 100%);
-    border-color: rgb(194, 106, 106);
+    
 }
 
 #highscore-btn:hover

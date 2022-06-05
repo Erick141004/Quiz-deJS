@@ -35,6 +35,7 @@ body{
     background-image: url("imgquiz/God-of-War.webp");
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; 
+    overflow: hidden;
 }
 
 .container

@@ -13,8 +13,26 @@ const highScores = JSON.parse(localStorage.getItem('highScores')) || []
 
 const MAX_HIGH_SCORES = 5
 
-finalScore.innerText = mostRecentScore
-numQuest.innerText = `Voce acertou um total de ${questAcert} de 10 questoes`
+finalScore.innerText = `Your score was ${mostRecentScore}`
+if(questAcert == 10)
+{
+    numQuest.innerText = `Entao voce eh um grande jogador de GOW. Voce acertou um total de ${questAcert} de 10 questoes`
+}
+else{
+    if(questAcert >= 7)
+    {
+        numQuest.innerText = `Parabens, voce realmente conhece bem GOW. Voce acertou um total de ${questAcert} de 10 questoes`
+    }
+    else{
+        if(questAcert >=4)
+        {
+            numQuest.innerText = `Parece que voce conhece um pouco de GOW. Voce acertou um total de ${questAcert} de 10 questoes`
+        }
+        else{
+            numQuest.innerText = `Acho que voce tem que jogar um pouco mais. Voce acertou um total de ${questAcert} de 10 questoes`
+        }
+    }
+}
 
 username.addEventListener('keyup', () => {
     saveScoreBtn.disabled = !username.value

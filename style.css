@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nova+Square&family=Roboto:wght@100&display=swap');
 
+@font-face {
+    font-family: 'GODOFWAR';
+    src: url('godofwar/GODOFWAR.TTF') format('truetype');
+  }
+
 :root{
     background-color: rgb(29, 26, 26);
 }
@@ -9,12 +14,13 @@
     margin: 0;
     padding: 0;
     font-size: 62.5%;
-    font-family: 'Nova Square', cursive;
+    font-family: 'GODOFWAR', cursive;
+    color: rgb(38, 38, 38);
 }
 
 h1{
     font-size: 5.4rem;
-    color: #fff;
+    color: rgb(38, 38, 38);
     margin-bottom: 5rem;
 }
 
@@ -23,16 +29,23 @@ h2{
     margin-bottom: 4rem;
 }
 
+body{
+    background-image: url("imgquiz/GOWpapelDeParede.webp");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+}
+
 .container
 {
     width: 100vw;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 80rem;
     margin: 0 auto;
     padding: 2rem;
+    height: 100vh;
 }
 
 .flex-column
@@ -139,7 +152,7 @@ input::placeholder
 
 #end-text{
     font-size: 2.4rem;
-    color: #fff;
+    color: rgb(38, 38, 38);
     text-align: center;
 }
 

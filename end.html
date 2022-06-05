@@ -11,12 +11,12 @@
 <body>
     <div class="container">
         <div id="end" class="flex-center flex-column">
-            <h1 class="text-center arrumando">Your Score and the time that you spend doing this quiz was</h1>
+            <h1 class="text-center">Your Score was</h1>
             <h1 id="finalScore">0</h1>
-            <h1 id="timeSpend">00:00</h1>
+            <h1 class="text-center" id="numQuest">Voce acertou um total de 0 de 10 questoes</h1>
             <form class="end-form-container">
                 <h2 id="end-text">
-                    Enter your name below to save your score and your time
+                    Enter your name below to save your score
                 </h2>
                 <input type="text" name="name" id="username" placeholder="Enter your name">
                 <button class="btn" id="saveScoreBtn" type="submit" onclick="saveHighScore(event)" disabled>Save</button>

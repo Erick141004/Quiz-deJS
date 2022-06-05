@@ -3,117 +3,144 @@ const choices = Array.from(document.querySelectorAll('.choice-text'));
 const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
+const botao = document.getElementById('button');
+const divImage = document.getElementById('divImage');
+const img = document.getElementById('image');
+let time = document.getElementById('time');
+let contador = document.getElementById('valorIntro')
+let emVoltaCont = document.getElementById('intro')
+let emVolta = document.getElementById('emVolta')
+let bonus = document.getElementById('bonus')
+const textoBonus = document.getElementById('textoBonus')
+const musicaTema = document.getElementById('player')
+const musicErro = document.getElementById('erro')
+const musicAcert = document.getElementById('acerto')
 
-let currentQuestion = {}
+let currentQuestion = []
 let acceptingAnswers = true
 let score = 0
 let questionCounter = 0
 let availableQuestions = []
-
-function img(){
-
-}
-
-let questions = [
-    {
-        question: 'What is 2 + 2?',
-        image: img(),
-        choice1: '2',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 2,
-    },
-    {
-        question: 'What is 2x + 4?',
-        choice1: '2',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 1,
-    },
-    {
-        question: 'What is 1 x 0 + 3?',
-        choice1: '2',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 3,
-    },
-    {
-        question: 'What is 7 x 3?',
-        choice1: '21',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 1,
-    },
-    {
-        question: 'What is 7 x 3 - 9?',
-        choice1: '18',
-        choice2: '10',
-        choice3: '14',
-        choice4: '12',
-        answer: 4,
-    },
-    {
-        question: 'What is (3 + 7) x 5?',
-        choice1: '55',
-        choice2: '17',
-        choice3: '13',
-        choice4: '50',
-        answer: 4,
-    },
-    {
-        question: 'What is 4 x 4 : 2?',
-        choice1: '27',
-        choice2: '41',
-        choice3: '8',
-        choice4: '23',
-        answer: 3,
-    },
-    {
-        question: 'What is (2 x 4) : 2 + 17?',
-        choice1: '21',
-        choice2: '43',
-        choice3: '32',
-        choice4: '12',
-        answer: 1,
-    },
-    {
-        question: 'What is 8 x 7?',
-        choice1: '56',
-        choice2: '2',
-        choice3: '3',
-        choice4: '34',
-        answer: 1,
-    },
-    {
-        question: 'What is 6 x 2?',
-        choice1: '21',
-        choice2: '4',
-        choice3: '3',
-        choice4: '12',
-        answer: 4,
-    },
-]
-
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 10
+let tempo, seconds, tempoInt, secondsInt = 3, cont = 0;
+
+let questions = [
+    [
+        'Qual é o nome da serpente apresentada em GOW4?',
+         'Anaconda',
+         'Jormungand ',
+         'Ball',
+         'Serquet',
+         2,
+    ],
+    [
+        'What is 2x + 4?',
+        '2',
+        '4',
+        '3',
+        '12',
+         1,
+    ],
+    [
+        'What is 1 x 0 + 3?',
+         '2',
+         '4',
+         '3',
+         '12',
+         3,
+         'imgquiz/modi-e-magni.png',
+    ],
+    [
+        'What is 7 x 3?',
+         '21',
+         '4',
+         '3',
+         '12',
+         1,
+         'imgquiz/prometheus.jpeg',
+    ],
+    [
+        'Qual é a mitologia que GOW usa como base para seus jogos?',
+         'Egipicia e Nordica',
+         'Romana e Nordica',
+         'Grega e Egipicia',
+         'Grega e Nordica',
+         4,
+    ],
+    [
+        'What is (3 + 7) x 5?',
+         '55',
+         '17',
+         '13',
+         '50',
+         4,
+    ],      
+    [
+        'What is 4 x 4 : 2?',
+         '27',
+         '41',
+         '8',
+         '23',
+         3,
+         'imgquiz/mimir.jpg',
+    ],
+    [
+        'What is (2 x 4) : 2 + 17?',
+            '21',
+            '43',
+            '32',
+            '12',
+            1,
+    ], 
+         
+    [
+        'What is 8 x 7?',
+        '56',
+        '2',
+        '3',
+        '34',
+        1,
+        'imgquiz/irmas-furia-gow.jpeg',
+    ],
+    [
+         'What is 6 x 2?',
+         '21',
+         '4',
+         '3',
+         '12',
+         4,
+    ],
+]
 
 startGame = () => {
     questionCounter = 0
     score = 0
     availableQuestions = [...questions]
-    getNewQuestion()
+    intro()
 }
 
 getNewQuestion = () =>
 {
+    botao.style.display = "none";
+    bonus.style.display = 'none'
+    musicaTema.play()
+
+    choices.forEach((choice) => {
+        if (choice.dataset['number'] == currentQuestion[5])
+        {
+            choice.parentElement.classList.remove('correct')
+        }         
+        else
+        {
+            choice.parentElement.classList.remove('incorrect')
+        }
+    })
+
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS)
     {
         localStorage.setItem('mostRecentScore', score)
-
+        localStorage.setItem('cont', cont)
         return window.location.assign('end.html')
     }
 
@@ -123,69 +150,170 @@ getNewQuestion = () =>
 
     const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
     currentQuestion = availableQuestions[questionsIndex]
-    question.innerText = currentQuestion.question
+    question.innerText = currentQuestion[0]
 
-    choices.forEach(choice => {
+    if (!(currentQuestion[6] == undefined))
+    {
+        divImage.style.display = "block"
+        img.src = currentQuestion[6];
+        document.getElementById('container').classList.add('imageContainer');
+    }
+    else
+    {
+        divImage.style.display = "none";
+        document.getElementById('container').classList.remove('imageContainer');
+    }
+    choices.forEach((choice, index) => {
         const number = choice.dataset['number']
-        choice.innerText = currentQuestion['choice' + number]
+        choice.innerText = currentQuestion[index + 1]
     })
 
     availableQuestions.splice(questionsIndex, 1)
 
-    acceptingAnswers = true
+    acceptingAnswers = true;
+    seconds = 15;
+    time.innerText = '00:15';
+    meuTempo();
 }
 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
         if(!acceptingAnswers) return
 
+        musicaTema.pause()
+        clearInterval(tempo);
         acceptingAnswers = false
         const selectedChoice = e.target
         const selectedAnswer = selectedChoice.dataset['number']
 
-        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
+        let classToApply = selectedAnswer == currentQuestion[5] ? 'correct' : 'incorrect'
 
-        if(classToApply === 'correct')
+        
+    
+        if(classToApply === 'correct' && seconds >= 12)
         {
-            incrementScore(SCORE_POINTS)
+            incrementScore(SCORE_POINTS + 50)
+            bonus.style.display = 'block'
+            textoBonus.innerHTML = 'BÔNUS +50'
+            musicAcert.play()
         }
-
-        selectedChoice.parentElement.classList.add(classToApply)
-
-        setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply)
-            getNewQuestion()
-        }, 1000)
+        else
+        {
+            if(classToApply === 'correct' && seconds >= 7) 
+            {
+                incrementScore(SCORE_POINTS + 30)
+                bonus.style.display = 'block'
+                textoBonus.innerHTML = 'BÔNUS +30'
+               
+            }
+            else
+            {
+                if(classToApply === 'correct' && seconds > 0)
+                { 
+                    incrementScore(SCORE_POINTS)
+                    musicAcert.play()
+                } 
+                else
+                {
+                    musicErro.play()
+                } 
+            }       
+        } 
+        
+        mostrarRespo();
     })
 })
+
+
 
 incrementScore = num => {
     score += num
     scoreText.innerText = score
+    cont++;
+}
+
+function mostrarRespo()
+{
+    choices.forEach((choice) => {
+        if (choice.dataset['number'] == currentQuestion[5])
+        {
+            choice.parentElement.classList.add('correct')
+        }         
+        else
+        {
+            choice.parentElement.classList.add('incorrect')
+        }
+    })
+    setTimeout(() => {
+        botao.style.display = "block";
+    }, 500)  
+}
+
+function meuTempo()
+{
+    tempo = setInterval(function(){
+        seconds--;
+        if(seconds >= 10)
+        {
+           time.innerHTML = `00:${seconds}`
+        }
+        else
+        {
+           time.innerHTML = `00:0${seconds}`
+        }
+        if(seconds == 0)
+        {
+            mostrarRespo();
+            musicErro.play()
+            musicaTema.pause()
+            clearInterval(tempo)
+        }
+    }, 1000)
+}
+
+function intro()
+{
+    tempoInt = setInterval(function(){
+        secondsInt--;
+        if(secondsInt == 3)
+        {
+            contador.innerHTML = '3'
+        }
+        else
+        {   
+            if(secondsInt == 2)
+            {
+                contador.innerHTML = '2'
+            }
+            else
+            {
+                if(secondsInt == 1)
+                {
+                    contador.innerHTML = '1'
+                }
+                else
+                {
+                    if(secondsInt == 0)
+                    {
+                        contador.innerHTML = 'VAI!'
+                    }
+                    else
+                    {
+                        if(secondsInt < 0)
+                        {
+                            document.body.removeChild(emVoltaCont)
+                            emVolta.style.display = 'block'
+                            clearInterval(tempoInt)
+                            getNewQuestion()  
+                        }     
+                    }
+                    
+                }
+            }
+        }
+    }, 1000)
 }
 
 startGame()
 
-/*
-
-let dt = new Date(new Date().setTime(0));
-let ctime = dt.getTime();
-let seconds = Math.floor((ctime % (1000 * 60))/ 1000);
-let minutes = Math.floor((ctime % (1000 * 60 * 60))/( 1000 * 60));
-console.log(seconds, minutes);
-let time = 0;
-let mytime = setInterval(function(){
-        time++;
-        
-        if(seconds < 59) {
-            seconds++;
-        } else {
-            seconds = 0;
-            minutes++;
-        }
-        let formatted_sec = seconds < 10 ? `0${seconds}`: `${seconds}`;
-        let formatted_min = minutes < 10 ? `0${minutes}`: `${minutes}`
-        document.querySelector("span.time").innerHTML = `${formatted_min} : ${formatted_sec}`;
-    }, 1000);
-
-    */
+    

@@ -1,16 +1,20 @@
 const username = document.querySelector('#username')
 const saveScoreBtn = document.querySelector('#saveScoreBtn')
 const finalScore = document.querySelector('#finalScore')
-const finalTime = document.querySelector('#timeSpend')
 const mostRecentScore = localStorage.getItem('mostRecentScore')
+const numQuest = document.getElementById('numQuest')
+const questAcert = localStorage.getItem('cont')
 
 
 
 const highScores = JSON.parse(localStorage.getItem('highScores')) || []
 
+
+
 const MAX_HIGH_SCORES = 5
 
 finalScore.innerText = mostRecentScore
+numQuest.innerText = `Voce acertou um total de ${questAcert} de 10 questoes`
 
 username.addEventListener('keyup', () => {
     saveScoreBtn.disabled = !username.value

@@ -1,5 +1,9 @@
 body{
-    color: #fff;
+    color: rgb(38, 38, 38);
+    background-image: url("imgquiz/GOWpapelDeParede.webp");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
 }
 
 .choice-container{
@@ -19,9 +23,127 @@ body{
     transform: 100ms;
 }
 
+.musica
+{
+    display: none;
+}
+
+#divImage
+{
+    width: 420px;
+    height: 240px;
+    background-color: rgb(38, 38, 38);
+    position: relative;
+    left: calc(50% - 210px);
+    top: calc(50% - 210px);
+    margin-bottom: 50px;
+    display: none;
+}
+
+#image
+{
+    width: 400px;
+    height: 220px;
+    position: relative;
+    left: calc(50% - 200px);
+    padding-top: 15px;
+}
+
+.imageContainer
+{
+    height: auto;
+}
+
+#intro
+{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 2rem;
+    height: 100vh;
+    position: absolute;
+    left: 600px;
+}
+
+#valorIntro
+{
+    font-size: 30.4rem;
+}
+
+#emVolta
+{
+    display: none;
+}
+
+.pulse
+{
+    animation: pulse 0.7s infinite;
+    margin: 0 auto;
+    display: table;
+    margin-top: 50px;
+    animation-direction: alternate;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+}
+
+#bonus {
+    display: none;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+      filter: brightness(100%);
+    }
+    100% {
+      transform: scale(1.1);
+      filter: brightness(200%);
+    }
+  }
+
+  @keyframes slide-right {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(40px);
+    }
+  }
+
+#button
+{
+    font-size: 2.4rem;
+    padding: 2rem 0;
+    width: 30rem;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: rgb(38, 38, 38);
+    background: linear-gradient(90deg, rgb(18, 92, 255) 0%, rgb(0, 102, 255) 100%);
+    border: none;
+    display: block;
+    position: relative;
+    left: 500px;
+    border-radius: 4px;
+}
+
+#button:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(8, 114, 244, 0,6);
+    transition: transform 150ms;
+    transform: scale(1.03);
+}
+
 .choice-prefix{
     padding: 2rem 2.5rem;
-    color: white;
+    color: rgb(38, 38, 38);
 }
 
 .choice-text{

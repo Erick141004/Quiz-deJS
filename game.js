@@ -34,7 +34,7 @@ let questions = [
          2,
     ],
     [
-        'Quantos reinos exitem em GOW4 ou seja na mitologia nordica que foi apresentada?',
+        'Quantos reinos exitem em GOW4?',
         '9',
         '10',
         '8',
@@ -42,7 +42,7 @@ let questions = [
          1,
     ],
     [
-        'Qual nome dos dois filhos de Thor que Kratos e atreus enfrentam em gow 4?',
+        'Qual nome dos dois filhos de Thor que Kratos e Atreus enfrentam em GOW 4?',
          'Radir e Rell',
          'Radir e Gelmur',
          'Magni e Modi',
@@ -51,7 +51,7 @@ let questions = [
          'imgquiz/modi-e-magni.png',
     ],
     [
-        'Por qual motivo Prometeu esta acorentado?',
+        'Em uma das mãos de Typhon, esta Prometheus. Por qual motivo ele está acorrentado?',
          'Pois ele entregou a chama do olimpo para os humanos',
          'Pois ele se apaixonou por uma mortal',
          'Pois ele duelou contra poseidon e perdeu',
@@ -60,15 +60,15 @@ let questions = [
          'imgquiz/prometheus.jpeg',
     ],
     [
-        'Qual é a mitologia que GOW usa como base para seus jogos?',
-         'Egipicia e Nordica',
-         'Romana e Nordica',
-         'Grega e Egipicia',
-         'Grega e Nordica',
+        'Quais são as mitologias que GOW usa nos jogos?',
+         'Egípcia e Nordica',
+         'Romana e Nórdica',
+         'Grega e Egípcia',
+         'Grega e Nórdica',
          4,
     ],
     [
-        'Qual era o nome da mãe do kratos',
+        'Qual era o nome da mãe do Kratos?',
          'Lysandra',
          'Reia',
          'Persephone',
@@ -76,7 +76,7 @@ let questions = [
          4,
     ],      
     [
-        'Qual é o nome deste personagem?',
+        'Qual é o nome deste personagem que aparece e ajuda Kratos e Atreus no GOW4?',
          'Celta',
          'Cernunos ',
          'Mimir',
@@ -94,7 +94,7 @@ let questions = [
     ], 
          
     [
-        'Qual o nomes das três irmãs furias?',
+        'Qual o nomes das três irmãs fúrias que aprecem no GOW Ascesion?',
         'Clotho, Lahkesis, e Atropos',
         'Lahkesis, Clotho, e Atropos',
         'Atropos, lahkesis, e clotho',
@@ -103,11 +103,11 @@ let questions = [
         'imgquiz/irmas-furia-gow.jpeg',
     ],
     [
-         'Qual foi o primeiro deus que kratos matou?',
+         'Qual foi o primeiro deus que Kratos matou?',
          'Ares, o deus da guerra',
          'Baldur, o estranho',
          'Hades, o deus do submundo',
-         'Alrik, o rei babaro',
+         'Alrik, o rei bárbaro',
          4,
     ],
 ]
@@ -172,7 +172,7 @@ getNewQuestion = () =>
     acceptingAnswers = true;
     seconds = 15;
     time.innerText = '00:15';
-    //meuTempo();
+    meuTempo();
 }
 
 choices.forEach(choice => {

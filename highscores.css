@@ -1,5 +1,9 @@
 body{
     color: #fff;
+    background-image: url("imgquiz/logo.jpg");
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-position: center;
 }
 
 #highScoresList

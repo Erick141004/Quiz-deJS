@@ -7,21 +7,22 @@
     <title>End of the Quiz</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
+    <link rel="icon" type="imagem/jpg" href="imgquiz/favicon.ico">
 </head>
-<body>
+<body class="planoDeFundo">
     <div class="container">
         <div id="end" class="flex-center flex-column">
-            <h1 id="finalScore" class="text-center">Your Score was 0</h1>
-            <h1 class="text-center" id="numQuest">Voce acertou um total de 0 de 10 questoes</h1>
+            <h1 id="finalScore" class="text-center">Sua pontuação foi 0</h1>
+            <h1 class="text-center" id="numQuest">Você acertou um total de 0 de 10 questões</h1>
             <form class="end-form-container">
                 <h2 id="end-text">
-                    Enter your name below to save your score
+                    Escreva seu nome abaixo para salvar sua pontuação
                 </h2>
-                <input type="text" name="name" id="username" placeholder="Enter your name">
-                <button class="btn" id="saveScoreBtn" type="submit" onclick="saveHighScore(event)" disabled>Save</button>
+                <input type="text" name="name" id="username" placeholder="Digite seu nome">
+                <button class="btn" id="saveScoreBtn" type="submit" onclick="saveHighScore(event)" disabled>Salvar</button>
             </form>
-            <a href="game.html" class="btn">Play Again</a>
-            <a href="index.html" class="btn">Go home<i class="fas fa-home"></i></a>
+            <a href="game.html" class="btn">Jogar de novo</a>
+            <a href="index.html" class="btn">Ir para o início<i class="fas fa-home"></i></a>
         </div>
     </div>
     <script src="end.js"></script>

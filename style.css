@@ -9,6 +9,14 @@
     background-color: rgb(29, 26, 26);
 }
 
+.planoDeFundo
+{
+    background-image: url("imgquiz/logo.jpg");
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-position: center;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -88,7 +96,7 @@ body{
     color: rgb(28, 26, 26);
     background: linear-gradient(90deg, rgb(136, 7, 18) 0%, rgb(194, 106, 106) 100%);
     border-radius: 5px;
-    
+    border: none;
 }
 
 .btn:hover{
@@ -140,6 +148,7 @@ input{
     font-size: 1.8rem;
     border: none;
     box-shadow: 0 0.1rem 1.4rem 0 rgba(0, 162, 243, 0.5);
+    color: rgb(28, 26, 26);
 }
 
 input::placeholder
@@ -156,7 +165,7 @@ input::placeholder
 
 #end-text{
     font-size: 2.4rem;
-    color: rgb(38, 38, 38);
+    color: #fff;
     text-align: center;
 }
 
@@ -172,6 +181,96 @@ input::placeholder
     color: rgb(28, 26, 26);
 }
 
-.arrumando{
-    font-size: 4rem;
+.info_box
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.info_box.activeInfo
+{
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.info_box
+{
+    width: auto;
+    padding: 15px 15px 0 15px;
+    background: #fff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.info-title
+{
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    border-radius: 5px 5px 0 0;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.info-list
+{
+    padding: 15px 30px;
+}
+
+.info
+{
+    color: #6c6060;
+    margin: 5px 0;
+    font-size: 17px;
+}
+
+span
+{
+    font-weight: 600;
+    color: #000;
+}
+
+.buttons
+{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    border-top: 1px solid lightgrey;
+}
+
+#voltar
+{
+    color: #007bff;
+    background: #fff;
+    margin: 10px 5px;
+    height: 45px;
+    width: 110px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    transition: all 0.3s ease;
+}
+
+#voltar:hover
+{
+    color: #fff;
+    background: #007bff;
 }

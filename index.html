@@ -8,15 +8,34 @@
     <title>Home Page // Quiz</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
+    <link rel="icon" type="imagem/jpg" href="imgquiz/favicon.ico">
 </head>
 
 <body>
     <div class="container">
         <div id="home" class="flex-column flex-center">
-            <a href="game.html" class="btn">Play</a>
-            <a href="highscores.html" id="highscore-btn" class="btn">High Scores<i class="fas fa-crown"></i></a>
+            <a href="game.html" class="btn">Jogar</a>
+            <button class="btn inst_btn" onclick="inst_btn()">Instruções</button>
+            <a href="highscores.html" id="highscore-btn" class="btn">Placar de Líderes<i class="fas fa-crown"></i></a>
+        </div>
+        <div id="intrucoes" class="info_box activeInfo">
+            <div class="info-title">
+                <span>Algumas Regras para jogar o Quiz</span>
+            </div>
+            <div class="info_list">
+                <div class="info"> 1- Você tem 15 segundos para responder cada questão.</div>
+                <div class="info"> 2- Selecionada uma alternativa, ela não poderá ser mudada.</div>
+                <div class="info"> 3- Se o tempo acabar, você não poderá escolher nenhuma alternativa.</div>
+                <div class="info"> 4- Você não pode sair do Quiz enquanto joga.</div>
+                <div class="info"> 5- Cada alternativa acertada receberá 100 pontos.</div>
+                <div class="info"> 6- Você receberá um bonus se responder a pergunta corretamente e rapidamente.</div>
+            </div>
+            <div class="buttons">
+                <button id="voltar" onclick="voltar()"> Voltar</button>
+            </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

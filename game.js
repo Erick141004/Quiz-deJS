@@ -89,12 +89,12 @@ let questions = [
             '2',
             '3',
             '4',
-            '5',
+            '1',
             1,
     ], 
          
     [
-        'Qual o nomes das três irmãs fúrias que aprecem no GOW Ascesion?',
+        'Qual o nomes das três irmãs fúrias que aparecem no GOW Ascesion?',
         'Clotho, Lahkesis, e Atropos',
         'Lahkesis, Clotho, e Atropos',
         'Atropos, lahkesis, e clotho',
